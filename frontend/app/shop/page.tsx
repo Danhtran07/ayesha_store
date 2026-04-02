@@ -233,7 +233,14 @@ export default function Shop() {
                     </span>
                   </div>
                   <button 
-                    onClick={() => router.push('/checkout')}
+                    onClick={() => {
+                      const token = localStorage.getItem('token')
+                      if (!token) {
+                        router.push('/login')
+                        return
+                      }
+                      router.push('/checkout')
+                    }}
                     className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors"
                   >
                     Thanh toán

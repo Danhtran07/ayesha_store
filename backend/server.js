@@ -18,11 +18,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/ecommerce")
 
 const productRoutes = require("./routes/productRoutes")
 const adminRoutes = require("./routes/adminRoutes")
+const adminUserRoutes = require("./routes/adminUserRoutes")
 const orderRoutes = require("./routes/orderRoutes")
 
 app.use("/api/products",productRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/api/admin", adminRoutes)
+app.use("/api/admin", adminUserRoutes)
 app.use("/api/orders", orderRoutes)
 
 app.listen(5000,()=>{

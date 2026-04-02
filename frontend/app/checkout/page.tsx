@@ -28,6 +28,14 @@ export default function Checkout() {
   const router = useRouter()
 
   useEffect(() => {
+    // Check authentication first
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.push('/login')
+      return
+    }
+
+    // Then load cart
     const savedCart = localStorage.getItem('cart')
     if (savedCart) {
       setCart(JSON.parse(savedCart))
