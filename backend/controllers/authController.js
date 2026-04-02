@@ -16,7 +16,11 @@ exports.register = async (req, res) => {
       password: hashed
     })
 
-    res.json(user)
+    res.json({
+      id: user._id,
+      email: user.email,
+      role: user.role
+    })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -38,7 +42,14 @@ exports.login = async (req, res) => {
       { expiresIn: "7d" }
     )
 
-    res.json({ token, user })
+    res.json({ 
+      token, 
+      user: {
+        id: user._id,
+        email: user.email,
+        role: user.role
+      }
+    })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

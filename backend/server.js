@@ -17,9 +17,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/ecommerce")
 .catch(err=>console.log(err))
 
 const productRoutes = require("./routes/productRoutes")
+const adminRoutes = require("./routes/adminRoutes")
+const orderRoutes = require("./routes/orderRoutes")
 
 app.use("/api/products",productRoutes)
 app.use("/api/auth", authRoutes)
+app.use("/api/admin", adminRoutes)
+app.use("/api/orders", orderRoutes)
 
 app.listen(5000,()=>{
     console.log("Server running on port 5000")
